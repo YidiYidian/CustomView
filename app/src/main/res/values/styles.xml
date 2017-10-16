@@ -42,6 +42,7 @@
         <attr name="radarLineColor" format="color"/>
         <attr name="radarTextColor" format="color"/>
         <attr name="radarTextSize" format="integer"/>
+        <attr name="radarRadius" format="integer"/>
     </declare-styleable>
 
 </resources>

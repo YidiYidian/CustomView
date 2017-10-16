@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import cn.onlyloveyd.customview.DemoActivity;
 import cn.onlyloveyd.customview.activity.CustomArcProgressBarActivity;
 import cn.onlyloveyd.customview.activity.IndicatorActivity;
+import cn.onlyloveyd.customview.activity.RadatActivity;
 
 /**
  * 文 件 名: CustomAdapter
@@ -42,6 +43,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
         Intent intent2 = new Intent();
         intent2.setClass(mContext , IndicatorActivity.class);
         demoList.add(intent2);
+
+        mTitles.add("自定义雷达图");
+        Intent intent3 = new Intent();
+        intent3.setClass(mContext , RadatActivity.class);
+        demoList.add(intent3);
+
+
 
     }
 
