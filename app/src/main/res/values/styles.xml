@@ -36,4 +36,12 @@
         <attr name="triangleHeight" format="dimension"/>
     </declare-styleable>
 
+    <declare-styleable name="CustomRadarChart">
+        <attr name="radarPieceNumber" format="integer"/>
+        <attr name="radarLineWidth" format="dimension"/>
+        <attr name="radarLineColor" format="color"/>
+        <attr name="radarTextColor" format="color"/>
+        <attr name="radarTextSize" format="integer"/>
+    </declare-styleable>
+
 </resources>
