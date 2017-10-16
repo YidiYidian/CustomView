@@ -22,6 +22,7 @@ import cn.onlyloveyd.customview.activity.IndicatorActivity;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ * @author Mraz
  */
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHolder> {
 
@@ -74,7 +75,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
 
     class TextViewHolder extends RecyclerView.ViewHolder {
 
-        public TextViewHolder(View itemView) {
+        TextViewHolder(View itemView) {
             super(itemView);
         }
     }

@@ -22,36 +22,63 @@ import cn.onlyloveyd.customview.R;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ * @author Mraz
  */
 public class CustomDotIndicator extends LinearLayout {
-    //自定义属性默认值
+    /**
+     * 自定义属性默认值
+     **/
     private final int DEFAULT_DOT_RADIUS = 10;
     private final int DEFAULT_DOT_COLOR = Color.GREEN;
-    private final int DEFAULT_DOT_FILLORSTROKE = 1;//0 空心 1 实心
-    private final int DEFAULT_DOT_STROKE_WIDTH = 2;//如果是空心，需要画笔宽度
 
-    //自定义属性
+    /**
+     * 0 空心 1 实心
+     */
+    private final int DEFAULT_DOT_FILLORSTROKE = 1;
+
+    /**
+     * 如果是空心，需要画笔宽度
+     */
+
+    private final int DEFAULT_DOT_STROKE_WIDTH = 2;
+
+    /**
+     * 自定义属性
+     */
     private int mDotRadius = DEFAULT_DOT_RADIUS;
     private int mDotColor = DEFAULT_DOT_COLOR;
     private int mDotFillOrStroke = DEFAULT_DOT_FILLORSTROKE;
     private int mDotStrokeWidth = DEFAULT_DOT_STROKE_WIDTH;
 
-    //指示器画笔
+    /**
+     * 指示器画笔
+     **/
     private Paint mDotPaint;
 
 
-    //ViewPager相关
+    /**
+     * ViewPager相关
+     */
+
     private ViewPager mViewPager;
     private final LinearLayout.LayoutParams defaultLayoutParams = new LinearLayout.LayoutParams(0,
             LayoutParams.MATCH_PARENT, 1.0f);
 
-    //Tab宽度和移动偏移，因为绘制位置 = 起点位置（固定） + Offset(随着ViewPager的滚动变化)
+    /**
+     * Tab宽度和移动偏移，因为绘制位置 = 起点位置（固定） + Offset(随着ViewPager的滚动变化)
+     */
     private float mTabWidth;
     private float mTabOffset;
 
-    //点指示器的中心点X坐标
+    /**
+     * 点指示器的中心点X坐标
+     */
     private float mDotStartPosition;
 
+    /**
+     * 设置ViewPager
+     * @param viewPager 新的ViewPager
+     */
     public void setViewPager(ViewPager viewPager) {
         mViewPager = viewPager;
         if (viewPager.getAdapter() == null || viewPager.getAdapter().getCount() == 0) {
@@ -77,6 +104,11 @@ public class CustomDotIndicator extends LinearLayout {
         });
     }
 
+    /**
+     * 添加文字Tab
+     * @param index 索引
+     * @param title tab标题
+     */
     private void addTextTab(final int index, String title) {
         TextView tab = new TextView(getContext());
         tab.setText(title);
@@ -92,7 +124,9 @@ public class CustomDotIndicator extends LinearLayout {
         this.addView(tab, index, defaultLayoutParams);
     }
 
-
+    /**
+     * 设置新的ViewPager之后对应的视图内容更新
+     */
     private void notifyViewPagerChanged() {
         this.removeAllViews();
         int tabCount = mViewPager.getAdapter().getCount();
@@ -110,6 +144,12 @@ public class CustomDotIndicator extends LinearLayout {
         this(context, attrs, 0);
     }
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     * @param attrs 属性值
+     * @param defStyleAttr 默认值
+     */
     public CustomDotIndicator(Context context,
             @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -135,6 +175,9 @@ public class CustomDotIndicator extends LinearLayout {
         mDotStartPosition = mTabWidth / 2;
     }
 
+    /**
+     * 初始化画笔
+     */
     private void init() {
         mDotPaint = new Paint();
         mDotPaint.setAntiAlias(true);

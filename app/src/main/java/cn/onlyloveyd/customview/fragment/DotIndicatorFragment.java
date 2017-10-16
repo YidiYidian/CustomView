@@ -16,6 +16,7 @@ import android.widget.TextView;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ * @author Mraz
  */
 public class DotIndicatorFragment extends Fragment {
 

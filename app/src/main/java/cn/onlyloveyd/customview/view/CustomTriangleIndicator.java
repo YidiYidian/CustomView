@@ -23,22 +23,29 @@ import cn.onlyloveyd.customview.R;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ * @author Mraz
  */
 public class CustomTriangleIndicator extends LinearLayout {
 
-    //自定义属性默认值
+    /**
+     *     自定义属性默认值
+     */
     private final int DEFAULT_TRIANGLE_COLOR = Color.GREEN;
     private final int DEFAULT_TRIANGLE_WIDTH = 10;
     private final int DEFAULT_TRIANGLE_HEIGHT = 6;
 
-    //自定义属性
+    /**
+     *     自定义属性
+     */
     private int mTriangleColor = DEFAULT_TRIANGLE_COLOR;
     private int mTriangleWidth = DEFAULT_TRIANGLE_WIDTH;
     private int mTriangleHeight = DEFAULT_TRIANGLE_HEIGHT;
 
-    //指示器画笔
+    /**
+     *     指示器画笔
+     */
     private Paint mTrianglePaint;
-    private Path mTriangePath;
+    private Path mTrianglePath;
 
     private ViewPager mViewPager;
     private final LinearLayout.LayoutParams defaultLayoutParams = new LinearLayout.LayoutParams(0,
@@ -48,7 +55,9 @@ public class CustomTriangleIndicator extends LinearLayout {
     private float mTabWidth;
     private float mTabOffset;
 
-    //矩形指示器的起点X坐标
+    /**
+     *     矩形指示器的起点X坐标
+     */
     private float mTriangleStartPosition;
 
     public void setViewPager(ViewPager viewPager) {
@@ -138,19 +147,19 @@ public class CustomTriangleIndicator extends LinearLayout {
         mTrianglePaint.setStrokeCap(Paint.Cap.ROUND);
         mTrianglePaint.setStyle(Paint.Style.FILL);
 
-        mTriangePath = new Path();
+        mTrianglePath = new Path();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        mTriangePath.reset();
+        mTrianglePath.reset();
         float currentStartPosition = mTriangleStartPosition + mTabOffset;
-        mTriangePath.moveTo(currentStartPosition , getHeight());
-        mTriangePath.lineTo(currentStartPosition + mTriangleWidth/2, getHeight()-mTriangleHeight);
-        mTriangePath.lineTo(currentStartPosition + mTriangleWidth, getHeight());
-        mTriangePath.close();
-        canvas.drawPath(mTriangePath, mTrianglePaint);
+        mTrianglePath.moveTo(currentStartPosition , getHeight());
+        mTrianglePath.lineTo(currentStartPosition + mTriangleWidth/2, getHeight()-mTriangleHeight);
+        mTrianglePath.lineTo(currentStartPosition + mTriangleWidth, getHeight());
+        mTrianglePath.close();
+        canvas.drawPath(mTrianglePath, mTrianglePaint);
     }
 }

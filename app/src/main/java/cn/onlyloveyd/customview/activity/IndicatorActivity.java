@@ -16,6 +16,15 @@ import cn.onlyloveyd.customview.view.CustomDotIndicator;
 import cn.onlyloveyd.customview.view.CustomRectangleIndicator;
 import cn.onlyloveyd.customview.view.CustomTriangleIndicator;
 
+/**
+ * 文 件 名: IndicatorActivity
+ * 创 建 人: 易冬
+ * 创建日期: 2017/10/10 16:48
+ * 邮   箱: onlyloveyd@gmail.com
+ * 博   客: https://onlyloveyd.cn
+ * 描   述：
+ * @author Mraz
+ */
 public class IndicatorActivity extends AppCompatActivity {
 
     @BindView(R.id.customDotIndicator)

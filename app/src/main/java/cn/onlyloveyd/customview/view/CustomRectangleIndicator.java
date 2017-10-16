@@ -22,18 +22,26 @@ import cn.onlyloveyd.customview.R;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ * @author Mraz
  */
 public class CustomRectangleIndicator extends LinearLayout{
-    //自定义属性默认值
+    /**
+     *     自定义属性默认值
+     */
     private final int DEFAULT_RECT_COLOR = Color.GREEN;
     private final int DEFAULT_RECT_HEIGHT = 4;
 
-    //自定义属性
+    /**
+     *     自定义属性
+     */
+
     private int mRectColor = DEFAULT_RECT_COLOR;
     private int mRectHeight = DEFAULT_RECT_HEIGHT;
 
 
-    //指示器画笔
+    /**
+     *     指示器画笔
+     */
     private Paint mRectPaint;
 
     private ViewPager mViewPager;
@@ -44,7 +52,9 @@ public class CustomRectangleIndicator extends LinearLayout{
     private float mTabWidth;
     private float mTabOffset;
 
-    //矩形指示器的起点X坐标
+    /**
+     *     矩形指示器的起点X坐标
+     */
     private float mRectStartPosition;
 
     public void setViewPager(ViewPager viewPager) {

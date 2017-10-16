@@ -10,6 +10,16 @@ import butterknife.ButterKnife;
 import cn.onlyloveyd.customview.R;
 import cn.onlyloveyd.customview.view.ArcView;
 
+
+/**
+ * 文 件 名: CustomArcProgressBarActivity
+ * 创 建 人: 易冬
+ * 创建日期: 2017/10/10 16:48
+ * 邮   箱: onlyloveyd@gmail.com
+ * 博   客: https://onlyloveyd.cn
+ * 描   述：
+ * @author Mraz
+ */
 public class CustomArcProgressBarActivity extends AppCompatActivity {
     @BindView(R.id.sb_indicator)
     SeekBar mSbIndicator;

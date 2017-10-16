@@ -11,6 +11,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.onlyloveyd.customview.adapter.CustomAdapter;
 
+/**
+ * 文 件 名: DemoActivity
+ * 创 建 人: 易冬
+ * 创建日期: 2017/10/10 16:48
+ * 邮   箱: onlyloveyd@gmail.com
+ * 博   客: https://onlyloveyd.cn
+ * 描   述：
+ * @author Mraz
+ */
 public class DemoActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_content)
