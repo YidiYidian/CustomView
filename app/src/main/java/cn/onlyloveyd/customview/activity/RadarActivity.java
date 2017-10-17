@@ -40,13 +40,12 @@ public class RadarActivity extends AppCompatActivity {
 
 
         List<CustomRadarChart.RadarEntry> radarEntries = new ArrayList<>();
-        radarEntries.add(0, new CustomRadarChart.RadarEntry("音乐", 80.0f));
-        radarEntries.add(1, new CustomRadarChart.RadarEntry("音乐", 60.0f));
-        radarEntries.add(2, new CustomRadarChart.RadarEntry("音乐", 90.0f));
-        radarEntries.add(3, new CustomRadarChart.RadarEntry("音乐", 30.0f));
-        radarEntries.add(4, new CustomRadarChart.RadarEntry("音乐", 100.0f));
-        radarEntries.add(5, new CustomRadarChart.RadarEntry("音乐", 20.0f));
-        radarEntries.add(5, new CustomRadarChart.RadarEntry("音乐", 80.0f));
+        radarEntries.add(0, new CustomRadarChart.RadarEntry("发育", 35.3f));
+        radarEntries.add(1, new CustomRadarChart.RadarEntry("推进", 43.1f));
+        radarEntries.add(2, new CustomRadarChart.RadarEntry("生存", 57.9f));
+        radarEntries.add(3, new CustomRadarChart.RadarEntry("输出", 34.3f));
+        radarEntries.add(4, new CustomRadarChart.RadarEntry("综合", 41.4f));
+        radarEntries.add(5, new CustomRadarChart.RadarEntry("KDA", 47.7f));
         customRadarChart.setRadatEntries(radarEntries);
 
     }

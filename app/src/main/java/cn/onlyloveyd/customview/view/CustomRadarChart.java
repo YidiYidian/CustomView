@@ -2,10 +2,10 @@ package cn.onlyloveyd.customview.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
+import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -39,10 +39,10 @@ public class CustomRadarChart extends View {
     /**
      * 线条颜色,默认为灰色
      */
-    private final int DEFAULT_LINE_COLOR = Color.GRAY;
+    private final int DEFAULT_LINE_COLOR = 0xffd0d6dc;
 
     /**
-     * 半径分成N段,默认为4段
+     * 半径分成N段,默认为4段，圆心算一段
      */
     private final int DEFAULT_LINE_SEGMENTS = 4;
 
@@ -54,13 +54,13 @@ public class CustomRadarChart extends View {
     /**
      * 文本颜色和文本字体, 默认为黑色，10px
      */
-    private final int DEFAULT_TEXT_COLOR = Color.BLACK;
-    private final int DEFAULT_TEXT_SIZE = 10;
+    private final int DEFAULT_TEXT_COLOR = 0xff647d91;
+    private final int DEFAULT_TEXT_SIZE = 40;
 
     /**
      * 覆盖面绘制颜色
      */
-    private final int DEFAULT_COVER_COLOR = 0xaacccccc;
+    private final int DEFAULT_COVER_COLOR = 0x55ced6dc;
 
     private int mPieceNumber = DEFAULT_PIECE_NUMBER;
     private int mLineWidth = DEFAULT_LINE_WIDTH;
@@ -81,6 +81,7 @@ public class CustomRadarChart extends View {
     List<RadarPoints> mRadarPointses = new ArrayList<>();
     List<RadarEntry> mRadarEntries = new ArrayList<>();
     List<PointF> mCoverPoints = new ArrayList<>();
+    List<PointF> mTextPoints = new ArrayList<>();
 
     /**
      * 外接圆中心位置
@@ -129,14 +130,6 @@ public class CustomRadarChart extends View {
         mCoverPaint.setAntiAlias(true);
         mCoverPaint.setStyle(Paint.Style.FILL);
         mCoverPath = new Path();
-
-//        mRadarEntries.add(0, new RadarEntry("音乐", 80.0f));
-//        mRadarEntries.add(1, new RadarEntry("音乐", 60.0f));
-//        mRadarEntries.add(2, new RadarEntry("音乐", 90.0f));
-//        mRadarEntries.add(3, new RadarEntry("音乐", 30.0f));
-//        mRadarEntries.add(4, new RadarEntry("音乐", 100.0f));
-//        mRadarEntries.add(5, new RadarEntry("音乐", 20.0f));
-//        mRadarEntries.add(5, new RadarEntry("音乐", 80.0f));
     }
 
     @Override
@@ -148,6 +141,9 @@ public class CustomRadarChart extends View {
         mPositionY = h / 2;
         mAverageAngle = 360.0 / mPieceNumber;
 
+        if (mRadarEntries==null || mRadarEntries.size()==0) {
+            throw new NullPointerException("请先设置数据集");
+        }
         /**
          * 计算每一条轴线上的所有点
          */
@@ -156,8 +152,8 @@ public class CustomRadarChart extends View {
             for (int j = 0; j < mLineSegments; j++) {
                 PointF point = new PointF();
                 double percent = j * 1.0 / (mLineSegments - 1);
-                point.set(getPloyX(mAverageAngle * i, percent),
-                        getPloyY(mAverageAngle * i, percent));
+                point.set(getPloygonX(mAverageAngle * i, percent),
+                        getPloygonY(mAverageAngle * i, percent));
                 pointFs.add(point);
             }
             RadarPoints radarPoints = new RadarPoints(i, pointFs);
@@ -170,8 +166,23 @@ public class CustomRadarChart extends View {
         for (int m = 0; m < mPieceNumber; m++) {
             PointF pointF = new PointF();
             double percent = mRadarEntries.get(m).level / 100.0;
-            pointF.set(getPloyX(mAverageAngle * m, percent), getPloyY(mAverageAngle * m, percent));
+            pointF.set(getPloygonX(mAverageAngle * m, percent),
+                    getPloygonY(mAverageAngle * m, percent));
             mCoverPoints.add(pointF);
+        }
+
+        /**
+         * 设置文字显示位置
+         */
+        for (int m = 0; m < mPieceNumber; m++) {
+            PointF pointF = new PointF();
+            String title = mRadarEntries.get(m).title;
+            Rect textBound = new Rect();
+            mTextPaint.getTextBounds(title, 0, title.length(),
+                    textBound);
+            pointF.set(getPloygonX(mAverageAngle * m, 1) + textBound.width(),
+                    getPloygonY(mAverageAngle * m, 1) + textBound.height());
+            mTextPoints.add(pointF);
         }
     }
 
@@ -180,6 +191,7 @@ public class CustomRadarChart extends View {
      */
     public void setRadatEntries(List<RadarEntry> entries) {
         this.mRadarEntries = entries;
+        mPieceNumber = entries.size();
         postInvalidate();
     }
 
@@ -238,15 +250,23 @@ public class CustomRadarChart extends View {
             throw new NullPointerException("请先设置数据集");
         }
 
+        /**
+         * 绘制文字
+         */
+        for (int i = 0; i < mPieceNumber; i++) {
+            canvas.drawText(mRadarEntries.get(i).title, mTextPoints.get(i).x, mTextPoints.get(i).y,
+                    mTextPaint);
+        }
+
     }
 
-    public float getPloyX(double angle, double percent) {
+    public float getPloygonX(double angle, double percent) {
         return Float.parseFloat(
                 String.valueOf(
                         mPositionX + Math.cos(angle / 360.0 * 2 * Math.PI) * mRadius * percent));
     }
 
-    public float getPloyY(double angle, double percent) {
+    public float getPloygonY(double angle, double percent) {
         return Float.parseFloat(String.valueOf(
                 mPositionY + Math.sin(angle / 360.0 * 2 * Math.PI) * mRadius * percent));
     }
