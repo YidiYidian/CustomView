@@ -7,6 +7,9 @@ import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -74,7 +77,7 @@ public class CustomRadarChart extends View {
     private double mAverageAngle = 0;
 
     private Paint mRadarPaint;
-    private Paint mTextPaint;
+    private TextPaint mTextPaint;
     private Paint mCoverPaint;
     private Path mCoverPath;
 
@@ -116,7 +119,7 @@ public class CustomRadarChart extends View {
         /**
          * 文字绘制Paint初始化
          */
-        mTextPaint = new Paint();
+        mTextPaint = new TextPaint();
         mTextPaint.setColor(mTextColor);
         mTextPaint.setTextSize(mTextSize);
         mTextPaint.setAntiAlias(true);
@@ -135,11 +138,18 @@ public class CustomRadarChart extends View {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-
-        mRadius = Math.min(w / 2, h / 2);
         mPositionX = w / 2;
         mPositionY = h / 2;
         mAverageAngle = 360.0 / mPieceNumber;
+
+        int max = 0;
+        for(RadarEntry entry : mRadarEntries) {
+            Rect textBound = new Rect();
+            mTextPaint.getTextBounds(entry.title, 0, entry.title.length(),
+                    textBound);
+            max = Math.max(textBound.width(), max);
+        }
+        mRadius = Math.min(w / 2 - max, h / 2);
 
         if (mRadarEntries==null || mRadarEntries.size()==0) {
             throw new NullPointerException("请先设置数据集");
@@ -176,18 +186,36 @@ public class CustomRadarChart extends View {
          */
         for (int m = 0; m < mPieceNumber; m++) {
             PointF pointF = new PointF();
-            String title = mRadarEntries.get(m).title;
-            Rect textBound = new Rect();
-            mTextPaint.getTextBounds(title, 0, title.length(),
-                    textBound);
-            pointF.set(getPloygonX(mAverageAngle * m, 1) + textBound.width(),
-                    getPloygonY(mAverageAngle * m, 1) + textBound.height());
+//            String title = mRadarEntries.get(m).title;
+//            Rect textBound = new Rect();
+//            mTextPaint.getTextBounds(title, 0, title.length(),
+//                    textBound);
+
+            String str= mRadarEntries.get(m).title + "\r\n" + Math.floor(mRadarEntries.get(m).level*10)/10;
+            StaticLayout layout = new StaticLayout(str, mTextPaint, 5,
+                    Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
+
+            float boundx = mRadarPointses.get(m).getPointFs().get(mLineSegments -1).x;
+            float boundy = mRadarPointses.get(m).getPointFs().get(mLineSegments -1).y;
+            if( boundx > mRadius && boundy <= mRadius) {
+                pointF.set(getPloygonX(mAverageAngle * m, 1),
+                        getPloygonY(mAverageAngle * m, 1) - 40) ;
+            } else if ( boundx <= mRadius && boundy <= mRadius){
+                pointF.set(getPloygonX(mAverageAngle * m, 1) - 20,
+                        getPloygonY(mAverageAngle * m, 1) - 40);
+            } else if( boundx <= mRadius && boundy > mRadius) {
+                pointF.set(getPloygonX(mAverageAngle * m, 1) - 20,
+                        getPloygonY(mAverageAngle * m, 1) );
+            } else {
+                pointF.set(getPloygonX(mAverageAngle * m, 1),
+                        getPloygonY(mAverageAngle * m, 1));
+            }
             mTextPoints.add(pointF);
         }
     }
 
     /**
-     * 设置数据集
+     * 设置数据集，数据集的index决定位置，顺时针方向，起始角度为0度
      */
     public void setRadatEntries(List<RadarEntry> entries) {
         this.mRadarEntries = entries;
@@ -241,7 +269,6 @@ public class CustomRadarChart extends View {
             mCoverPath.reset();
             mCoverPath.moveTo(mCoverPoints.get(0).x, mCoverPoints.get(0).y);
             for (int i = 1; i < mPieceNumber; i++) {
-                System.err.println("yidong -- i = " + i);
                 mCoverPath.lineTo(mCoverPoints.get(i).x, mCoverPoints.get(i).y);
             }
             mCoverPath.close();
@@ -251,11 +278,16 @@ public class CustomRadarChart extends View {
         }
 
         /**
-         * 绘制文字
+         * 绘制文字,使用StaticLayout进行换行文字的绘制
          */
         for (int i = 0; i < mPieceNumber; i++) {
-            canvas.drawText(mRadarEntries.get(i).title, mTextPoints.get(i).x, mTextPoints.get(i).y,
-                    mTextPaint);
+            canvas.save();
+            String str= mRadarEntries.get(i).title + "\r\n" + Math.floor(mRadarEntries.get(i).level*10)/10;
+            StaticLayout layout = new StaticLayout(str, mTextPaint, 300,
+                    Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
+            canvas.translate(mTextPoints.get(i).x,mTextPoints.get(i).y);
+            layout.draw(canvas);
+            canvas.restore();
         }
 
     }

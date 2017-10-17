@@ -31,7 +31,7 @@ public class RadarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_radat);
+        setContentView(R.layout.activity_radar);
         ButterKnife.bind(this);
 
         Slide slide = new Slide();
