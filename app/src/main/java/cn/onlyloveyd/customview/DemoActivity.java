@@ -18,8 +18,10 @@ import cn.onlyloveyd.customview.adapter.CustomAdapter;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ *
  * @author Mraz
  */
+@SuppressWarnings("ALL")
 public class DemoActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_content)
@@ -38,11 +40,13 @@ public class DemoActivity extends AppCompatActivity {
         getWindow().setExitTransition(slide);
 
         mCustomAdapter = new CustomAdapter(this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL, false);
 
         mRvContent.setAdapter(mCustomAdapter);
         mRvContent.setLayoutManager(linearLayoutManager);
-        mRvContent.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        mRvContent.addItemDecoration(
+                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
     }
 }

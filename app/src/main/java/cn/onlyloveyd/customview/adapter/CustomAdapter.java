@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import cn.onlyloveyd.customview.DemoActivity;
 import cn.onlyloveyd.customview.activity.CustomArcProgressBarActivity;
 import cn.onlyloveyd.customview.activity.IndicatorActivity;
-import cn.onlyloveyd.customview.activity.RadatActivity;
+import cn.onlyloveyd.customview.activity.RadarActivity;
 
 /**
  * 文 件 名: CustomAdapter
@@ -23,32 +23,32 @@ import cn.onlyloveyd.customview.activity.RadatActivity;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ *
  * @author Mraz
  */
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHolder> {
 
     private final Context mContext;
     private final ArrayList<Intent> demoList = new ArrayList<>();
-    private final ArrayList<String> mTitles =  new ArrayList<>();
+    private final ArrayList<String> mTitles = new ArrayList<>();
 
     public CustomAdapter(Context context) {
         mContext = context;
 
         mTitles.add("自定义仪表盘进度条");
         Intent intent = new Intent();
-        intent.setClass(mContext , CustomArcProgressBarActivity.class);
+        intent.setClass(mContext, CustomArcProgressBarActivity.class);
         demoList.add(intent);
 
         mTitles.add("自定义ViewPager指示器");
         Intent intent2 = new Intent();
-        intent2.setClass(mContext , IndicatorActivity.class);
+        intent2.setClass(mContext, IndicatorActivity.class);
         demoList.add(intent2);
 
         mTitles.add("自定义雷达图");
         Intent intent3 = new Intent();
-        intent3.setClass(mContext , RadatActivity.class);
+        intent3.setClass(mContext, RadarActivity.class);
         demoList.add(intent3);
-
 
 
     }
@@ -58,7 +58,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
         TextView textView = new TextView(mContext);
         textView.setTextSize(20);
         textView.setGravity(Gravity.CENTER_VERTICAL);
-        textView.setPadding(20,20,0,20);
+        textView.setPadding(20, 20, 0, 20);
         textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
         return new TextViewHolder(textView);
@@ -67,11 +67,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
     @Override
     public void onBindViewHolder(TextViewHolder holder, int position) {
         final int finalPosition = position;
-        ((TextView)holder.itemView).setText(mTitles.get(position));
+        ((TextView) holder.itemView).setText(mTitles.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mContext.startActivity(demoList.get(finalPosition), ActivityOptions.makeSceneTransitionAnimation((DemoActivity)mContext).toBundle());
+                mContext.startActivity(demoList.get(finalPosition),
+                        ActivityOptions.makeSceneTransitionAnimation(
+                                (DemoActivity) mContext).toBundle());
             }
         });
     }

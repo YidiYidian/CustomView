@@ -23,26 +23,27 @@ import cn.onlyloveyd.customview.R;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ *
  * @author Mraz
  */
 public class CustomTriangleIndicator extends LinearLayout {
 
     /**
-     *     自定义属性默认值
+     * 自定义属性默认值
      */
     private final int DEFAULT_TRIANGLE_COLOR = Color.GREEN;
     private final int DEFAULT_TRIANGLE_WIDTH = 10;
     private final int DEFAULT_TRIANGLE_HEIGHT = 6;
 
     /**
-     *     自定义属性
+     * 自定义属性
      */
     private int mTriangleColor = DEFAULT_TRIANGLE_COLOR;
     private int mTriangleWidth = DEFAULT_TRIANGLE_WIDTH;
     private int mTriangleHeight = DEFAULT_TRIANGLE_HEIGHT;
 
     /**
-     *     指示器画笔
+     * 指示器画笔
      */
     private Paint mTrianglePaint;
     private Path mTrianglePath;
@@ -56,7 +57,7 @@ public class CustomTriangleIndicator extends LinearLayout {
     private float mTabOffset;
 
     /**
-     *     矩形指示器的起点X坐标
+     * 矩形指示器的起点X坐标
      */
     private float mTriangleStartPosition;
 
@@ -125,9 +126,12 @@ public class CustomTriangleIndicator extends LinearLayout {
         final TypedArray attributes = getContext().obtainStyledAttributes(attrs,
                 R.styleable.CustomTriangleIndicator);
 
-        mTriangleColor = attributes.getColor(R.styleable.CustomTriangleIndicator_triangleColor, DEFAULT_TRIANGLE_COLOR);
-        mTriangleWidth = (int) attributes.getDimension(R.styleable.CustomTriangleIndicator_triangleWidth, DEFAULT_TRIANGLE_WIDTH);
-        mTriangleHeight = (int) attributes.getDimension(R.styleable.CustomTriangleIndicator_triangleHeight, DEFAULT_TRIANGLE_HEIGHT);
+        mTriangleColor = attributes.getColor(R.styleable.CustomTriangleIndicator_triangleColor,
+                DEFAULT_TRIANGLE_COLOR);
+        mTriangleWidth = (int) attributes.getDimension(
+                R.styleable.CustomTriangleIndicator_triangleWidth, DEFAULT_TRIANGLE_WIDTH);
+        mTriangleHeight = (int) attributes.getDimension(
+                R.styleable.CustomTriangleIndicator_triangleHeight, DEFAULT_TRIANGLE_HEIGHT);
 
         attributes.recycle();
         init();
@@ -137,7 +141,7 @@ public class CustomTriangleIndicator extends LinearLayout {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         mTabWidth = w * 1.0f / getChildCount();
-        mTriangleStartPosition = (mTabWidth - mTriangleWidth) /2;
+        mTriangleStartPosition = (mTabWidth - mTriangleWidth) / 2;
     }
 
     private void init() {
@@ -156,8 +160,9 @@ public class CustomTriangleIndicator extends LinearLayout {
 
         mTrianglePath.reset();
         float currentStartPosition = mTriangleStartPosition + mTabOffset;
-        mTrianglePath.moveTo(currentStartPosition , getHeight());
-        mTrianglePath.lineTo(currentStartPosition + mTriangleWidth/2, getHeight()-mTriangleHeight);
+        mTrianglePath.moveTo(currentStartPosition, getHeight());
+        mTrianglePath.lineTo(currentStartPosition + mTriangleWidth / 2,
+                getHeight() - mTriangleHeight);
         mTrianglePath.lineTo(currentStartPosition + mTriangleWidth, getHeight());
         mTrianglePath.close();
         canvas.drawPath(mTrianglePath, mTrianglePaint);

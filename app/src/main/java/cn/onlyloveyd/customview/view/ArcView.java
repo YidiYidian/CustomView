@@ -20,8 +20,10 @@ import cn.onlyloveyd.customview.R;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ *
  * @author Mraz
  */
+@SuppressWarnings("ALL")
 public class ArcView extends View {
 
     private final int MAX_SWEEP_ANGLE = 240;
@@ -104,7 +106,7 @@ public class ArcView extends View {
         mTextPaint.setStrokeWidth(4);
 
         //字体SP单位转换成PX
-        int size =  (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+        int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
                 mTextSize, getResources().getDisplayMetrics());
         mTextPaint.setTextSize(size);
         mTextPaint.setAntiAlias(true);

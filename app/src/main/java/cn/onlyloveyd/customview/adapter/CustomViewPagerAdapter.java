@@ -15,6 +15,7 @@ import cn.onlyloveyd.customview.fragment.DotIndicatorFragment;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ *
  * @author Mraz
  */
 public class CustomViewPagerAdapter extends FragmentPagerAdapter {
@@ -22,7 +23,7 @@ public class CustomViewPagerAdapter extends FragmentPagerAdapter {
 
     public CustomViewPagerAdapter(FragmentManager fm, List<String> titles) {
         super(fm);
-        this.mTitles=titles;
+        this.mTitles = titles;
     }
 
     @Override

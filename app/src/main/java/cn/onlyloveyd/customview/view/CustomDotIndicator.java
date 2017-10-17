@@ -22,6 +22,7 @@ import cn.onlyloveyd.customview.R;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ *
  * @author Mraz
  */
 public class CustomDotIndicator extends LinearLayout {
@@ -77,6 +78,7 @@ public class CustomDotIndicator extends LinearLayout {
 
     /**
      * 设置ViewPager
+     *
      * @param viewPager 新的ViewPager
      */
     public void setViewPager(ViewPager viewPager) {
@@ -106,6 +108,7 @@ public class CustomDotIndicator extends LinearLayout {
 
     /**
      * 添加文字Tab
+     *
      * @param index 索引
      * @param title tab标题
      */
@@ -146,8 +149,9 @@ public class CustomDotIndicator extends LinearLayout {
 
     /**
      * 构造方法
-     * @param context 上下文
-     * @param attrs 属性值
+     *
+     * @param context      上下文
+     * @param attrs        属性值
      * @param defStyleAttr 默认值
      */
     public CustomDotIndicator(Context context,

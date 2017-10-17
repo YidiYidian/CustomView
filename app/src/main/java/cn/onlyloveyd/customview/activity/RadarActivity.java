@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Slide;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.onlyloveyd.customview.R;
@@ -19,7 +22,8 @@ import cn.onlyloveyd.customview.view.CustomRadarChart;
  *
  * @author Mraz
  */
-public class RadatActivity extends AppCompatActivity {
+@SuppressWarnings("ALL")
+public class RadarActivity extends AppCompatActivity {
 
     @BindView(R.id.customRadarChart)
     CustomRadarChart customRadarChart;
@@ -35,7 +39,15 @@ public class RadatActivity extends AppCompatActivity {
         getWindow().setEnterTransition(slide);
 
 
-        System.err.println("yidong -- X = " + Math.sin(0/ 360.0 * 2 * Math.PI));
+        List<CustomRadarChart.RadarEntry> radarEntries = new ArrayList<>();
+        radarEntries.add(0, new CustomRadarChart.RadarEntry("音乐", 80.0f));
+        radarEntries.add(1, new CustomRadarChart.RadarEntry("音乐", 60.0f));
+        radarEntries.add(2, new CustomRadarChart.RadarEntry("音乐", 90.0f));
+        radarEntries.add(3, new CustomRadarChart.RadarEntry("音乐", 30.0f));
+        radarEntries.add(4, new CustomRadarChart.RadarEntry("音乐", 100.0f));
+        radarEntries.add(5, new CustomRadarChart.RadarEntry("音乐", 20.0f));
+        radarEntries.add(5, new CustomRadarChart.RadarEntry("音乐", 80.0f));
+        customRadarChart.setRadatEntries(radarEntries);
 
     }
 }

@@ -16,6 +16,7 @@ import android.widget.TextView;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ *
  * @author Mraz
  */
 public class DotIndicatorFragment extends Fragment {
@@ -33,8 +34,8 @@ public class DotIndicatorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        String title = bundle!=null?bundle.getString("TITLE"):null;
-        TextView  textView = new TextView(getContext());
+        String title = bundle != null ? bundle.getString("TITLE") : null;
+        TextView textView = new TextView(getContext());
         textView.setGravity(Gravity.CENTER);
         textView.setTextSize(40);
         textView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,

@@ -22,17 +22,18 @@ import cn.onlyloveyd.customview.R;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ *
  * @author Mraz
  */
-public class CustomRectangleIndicator extends LinearLayout{
+public class CustomRectangleIndicator extends LinearLayout {
     /**
-     *     自定义属性默认值
+     * 自定义属性默认值
      */
     private final int DEFAULT_RECT_COLOR = Color.GREEN;
     private final int DEFAULT_RECT_HEIGHT = 4;
 
     /**
-     *     自定义属性
+     * 自定义属性
      */
 
     private int mRectColor = DEFAULT_RECT_COLOR;
@@ -40,7 +41,7 @@ public class CustomRectangleIndicator extends LinearLayout{
 
 
     /**
-     *     指示器画笔
+     * 指示器画笔
      */
     private Paint mRectPaint;
 
@@ -53,7 +54,7 @@ public class CustomRectangleIndicator extends LinearLayout{
     private float mTabOffset;
 
     /**
-     *     矩形指示器的起点X坐标
+     * 矩形指示器的起点X坐标
      */
     private float mRectStartPosition;
 
@@ -122,7 +123,8 @@ public class CustomRectangleIndicator extends LinearLayout{
         final TypedArray attributes = getContext().obtainStyledAttributes(attrs,
                 R.styleable.CustomRectangleIndicator);
 
-        mRectColor = attributes.getColor(R.styleable.CustomRectangleIndicator_rectColor, DEFAULT_RECT_COLOR);
+        mRectColor = attributes.getColor(R.styleable.CustomRectangleIndicator_rectColor,
+                DEFAULT_RECT_COLOR);
         mRectHeight = (int) attributes.getDimension(R.styleable.CustomRectangleIndicator_rectHeight,
                 DEFAULT_RECT_HEIGHT);
         attributes.recycle();
@@ -147,6 +149,7 @@ public class CustomRectangleIndicator extends LinearLayout{
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawRect(mRectStartPosition + mTabOffset, getHeight() - mRectHeight , mRectStartPosition + mTabOffset + mTabWidth , getHeight(), mRectPaint);
+        canvas.drawRect(mRectStartPosition + mTabOffset, getHeight() - mRectHeight,
+                mRectStartPosition + mTabOffset + mTabWidth, getHeight(), mRectPaint);
     }
 }

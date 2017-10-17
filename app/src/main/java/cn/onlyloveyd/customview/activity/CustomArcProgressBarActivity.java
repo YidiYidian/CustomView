@@ -18,8 +18,10 @@ import cn.onlyloveyd.customview.view.ArcView;
  * 邮   箱: onlyloveyd@gmail.com
  * 博   客: https://onlyloveyd.cn
  * 描   述：
+ *
  * @author Mraz
  */
+@SuppressWarnings("ALL")
 public class CustomArcProgressBarActivity extends AppCompatActivity {
     @BindView(R.id.sb_indicator)
     SeekBar mSbIndicator;
