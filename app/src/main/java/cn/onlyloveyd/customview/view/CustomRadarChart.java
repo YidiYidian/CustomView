@@ -186,25 +186,20 @@ public class CustomRadarChart extends View {
          */
         for (int m = 0; m < mPieceNumber; m++) {
             PointF pointF = new PointF();
-//            String title = mRadarEntries.get(m).title;
-//            Rect textBound = new Rect();
-//            mTextPaint.getTextBounds(title, 0, title.length(),
-//                    textBound);
-
-            String str= mRadarEntries.get(m).title + "\r\n" + Math.floor(mRadarEntries.get(m).level*10)/10;
-            StaticLayout layout = new StaticLayout(str, mTextPaint, 5,
-                    Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, true);
-
+            String title = mRadarEntries.get(m).title;
+            Rect textBound = new Rect();
+            mTextPaint.getTextBounds(title, 0, title.length(),
+                    textBound);
             float boundx = mRadarPointses.get(m).getPointFs().get(mLineSegments -1).x;
             float boundy = mRadarPointses.get(m).getPointFs().get(mLineSegments -1).y;
             if( boundx > mRadius && boundy <= mRadius) {
                 pointF.set(getPloygonX(mAverageAngle * m, 1),
-                        getPloygonY(mAverageAngle * m, 1) - 40) ;
+                        getPloygonY(mAverageAngle * m, 1) - textBound.height()*2) ;
             } else if ( boundx <= mRadius && boundy <= mRadius){
-                pointF.set(getPloygonX(mAverageAngle * m, 1) - 20,
-                        getPloygonY(mAverageAngle * m, 1) - 40);
+                pointF.set(getPloygonX(mAverageAngle * m, 1) - textBound.width(),
+                        getPloygonY(mAverageAngle * m, 1) - textBound.height()*2);
             } else if( boundx <= mRadius && boundy > mRadius) {
-                pointF.set(getPloygonX(mAverageAngle * m, 1) - 20,
+                pointF.set(getPloygonX(mAverageAngle * m, 1) - textBound.width(),
                         getPloygonY(mAverageAngle * m, 1) );
             } else {
                 pointF.set(getPloygonX(mAverageAngle * m, 1),
