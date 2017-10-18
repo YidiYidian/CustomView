@@ -53,9 +53,6 @@ public class CustomViewGroup extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        System.err.println(
-                "yidong -- changed = " + changed + " l = " + l + " t = " + t + " r = " + r + " b = "
-                        + b);
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
             int width = child.getMeasuredWidth();
@@ -64,10 +61,6 @@ public class CustomViewGroup extends ViewGroup {
             int gravity = lp.gravity;
             final int verticalGravity = gravity & Gravity.VERTICAL_GRAVITY_MASK;
             final int horizontalGravity = gravity & Gravity.HORIZONTAL_GRAVITY_MASK;
-            System.err.println(
-                    "yidong -- verticalGravity = " + verticalGravity + " horizontalGravity = "
-                            + horizontalGravity);
-            System.err.println("yidong -- width = " + width + " height = " + height);
 
             int cl, ct, cr, cb;
             switch (verticalGravity) {
