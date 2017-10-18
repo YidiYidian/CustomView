@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import cn.onlyloveyd.customview.DemoActivity;
 import cn.onlyloveyd.customview.activity.CustomArcProgressBarActivity;
+import cn.onlyloveyd.customview.activity.CustomViewGroupActivity;
 import cn.onlyloveyd.customview.activity.IndicatorActivity;
 import cn.onlyloveyd.customview.activity.RadarActivity;
 
@@ -50,7 +51,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
         intent3.setClass(mContext, RadarActivity.class);
         demoList.add(intent3);
 
-
+        mTitles.add("自定义ViewGroup");
+        Intent intent4 = new Intent();
+        intent4.setClass(mContext, CustomViewGroupActivity.class);
+        demoList.add(intent4);
     }
 
     @Override

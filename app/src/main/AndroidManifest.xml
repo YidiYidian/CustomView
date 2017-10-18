@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".activity.IndicatorActivity"/>
         <activity android:name=".activity.RadarActivity"/>
+        <activity android:name=".activity.CustomViewGroupActivity">
+        </activity>
     </application>
 
 </manifest>
