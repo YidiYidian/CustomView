@@ -1,6 +1,7 @@
 package cn.onlyloveyd.customview.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -11,10 +12,13 @@ import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.onlyloveyd.customview.R;
 
 /**
  * 文 件 名: CustomRadarChart
@@ -58,7 +62,7 @@ public class CustomRadarChart extends View {
      * 文本颜色和文本字体, 默认为黑色，10px
      */
     private final int DEFAULT_TEXT_COLOR = 0xff647d91;
-    private final int DEFAULT_TEXT_SIZE = 40;
+    private final int DEFAULT_TEXT_SIZE = 10;
 
     /**
      * 覆盖面绘制颜色
@@ -66,12 +70,13 @@ public class CustomRadarChart extends View {
     private final int DEFAULT_COVER_COLOR = 0x55ced6dc;
 
     private int mPieceNumber = DEFAULT_PIECE_NUMBER;
+    private int mRadius = DEFAULT_RADIUS;
+
     private int mLineWidth = DEFAULT_LINE_WIDTH;
     private int mLineColor = DEFAULT_LINE_COLOR;
     private int mLineSegments = DEFAULT_LINE_SEGMENTS;
     private int mTextColor = DEFAULT_TEXT_COLOR;
     private int mTextSize = DEFAULT_TEXT_SIZE;
-    private int mRadius = DEFAULT_RADIUS;
     private int mCoverColor = DEFAULT_COVER_COLOR;
 
     private double mAverageAngle = 0;
@@ -103,6 +108,17 @@ public class CustomRadarChart extends View {
 
     public CustomRadarChart(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        TypedArray attributes = getContext().obtainStyledAttributes(attrs, R.styleable.CustomRadarChart);
+
+        mLineWidth = (int) attributes.getDimension(R.styleable.CustomRadarChart_radarLineWidth, DEFAULT_LINE_WIDTH);
+        mLineColor = attributes.getColor(R.styleable.CustomRadarChart_radarLineColor, DEFAULT_LINE_COLOR);
+        mLineSegments = attributes.getInteger(R.styleable.CustomRadarChart_radarLineSegments, DEFAULT_LINE_SEGMENTS);
+        mTextColor = attributes.getColor(R.styleable.CustomRadarChart_radarTextColor, DEFAULT_TEXT_COLOR);
+
+        mTextSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                attributes.getInteger(R.styleable.CustomRadarChart_radarTextSize, DEFAULT_TEXT_SIZE), getResources().getDisplayMetrics());
+        mCoverColor = (int) attributes.getColor(R.styleable.CustomRadarChart_radarCoverColor, DEFAULT_COVER_COLOR);
+
         init();
     }
 

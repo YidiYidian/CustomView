@@ -37,12 +37,18 @@
     </declare-styleable>
 
     <declare-styleable name="CustomRadarChart">
-        <attr name="radarPieceNumber" format="integer"/>
+        <!-- 蜘蛛网线条宽度 -->
         <attr name="radarLineWidth" format="dimension"/>
+        <!-- 蜘蛛网颜色 -->
         <attr name="radarLineColor" format="color"/>
+        <!-- 半径分成N段-->
+        <attr name="radarLineSegments" format="integer"/>
+        <!-- 文字颜色 -->
         <attr name="radarTextColor" format="color"/>
+        <!-- 文字字体大小-->
         <attr name="radarTextSize" format="integer"/>
-        <attr name="radarRadius" format="integer"/>
+        <!-- 数据展示覆盖区域颜色 -->
+        <attr name="radarCoverColor" format="color"/>
     </declare-styleable>
 
     <declare-styleable name="CustomViewGroup">
