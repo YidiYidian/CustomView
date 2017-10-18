@@ -3,11 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="cn.onlyloveyd.customview.activity.CustomViewGroupActivity">
 
     <TextView
         android:id="@+id/tv_topleft"
+        app:custom_gravity ="top|left"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:layout_width="wrap_content"
@@ -15,6 +16,7 @@
         android:text="topLeft"/>
     <TextView
         android:id="@+id/tv_topright"
+        app:custom_gravity ="top|right"
         android:background="@color/colorAccent"
         android:gravity="center"
         android:layout_width="wrap_content"
@@ -22,6 +24,7 @@
         android:text="topRight"/>
     <TextView
         android:id="@+id/tv_bottomright"
+        app:custom_gravity ="bottom|right"
         android:background="@android:color/holo_green_light"
         android:gravity="center"
         android:layout_width="wrap_content"
@@ -29,6 +32,7 @@
         android:text="bottomRight"/>
     <TextView
         android:id="@+id/tv_bottomleft"
+        app:custom_gravity ="bottom|left"
         android:background="@android:color/holo_orange_light"
         android:gravity="center"
         android:layout_width="wrap_content"

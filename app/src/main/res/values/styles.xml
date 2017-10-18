@@ -45,4 +45,16 @@
         <attr name="radarRadius" format="integer"/>
     </declare-styleable>
 
+    <declare-styleable name="CustomViewGroup">
+        <attr name="custom_gravity"/>
+
+    </declare-styleable>
+    <attr name="custom_gravity">
+        <flag name="top" value="0x30" />
+        <flag name="right" value="0x05" />
+        <flag name="bottom" value="0x50" />
+        <flag name="left" value="0x03" />
+
+    </attr>
+
 </resources>
