@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -59,39 +58,26 @@ public class CustomViewGroup extends ViewGroup {
             int height = child.getMeasuredHeight();
             final LayoutParams lp = (LayoutParams) child.getLayoutParams();
             int gravity = lp.gravity;
-            final int verticalGravity = gravity & Gravity.VERTICAL_GRAVITY_MASK;
-            final int horizontalGravity = gravity & Gravity.HORIZONTAL_GRAVITY_MASK;
-
-            int cl, ct, cr, cb;
-            switch (verticalGravity) {
-                case Gravity.TOP:
-                    ct = t;
-                    cb = height;
+            switch (gravity) {
+                case 1:
+                    child.layout(l, t, width, height);
                     break;
-                case Gravity.BOTTOM:
-                    ct = b - height;
-                    cb = b;
+                case 2:
+                    child.layout(r - width, t, r, height);
                     break;
-                default:
-                    ct = t;
-                    cb = height;
+                case 3:
+                    child.layout(l, b - height, width, b);
                     break;
-            }
-            switch (horizontalGravity) {
-                case Gravity.LEFT:
-                    cl = l;
-                    cr = width;
+                case 4:
+                    child.layout(r - width, b - height, r, b);
                     break;
-                case Gravity.RIGHT:
-                    cl = r - width;
-                    cr = r;
+                case 5:
+                    child.layout((r - width) / 2, (b - height) / 2, (r + width) / 2,
+                            (b + height) / 2);
                     break;
                 default:
-                    cl = l;
-                    cr = width;
                     break;
             }
-            child.layout(cl, ct, cr, cb);
         }
     }
 

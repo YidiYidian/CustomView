@@ -56,11 +56,11 @@
 
     </declare-styleable>
     <attr name="custom_gravity">
-        <flag name="top" value="0x30" />
-        <flag name="right" value="0x05" />
-        <flag name="bottom" value="0x50" />
-        <flag name="left" value="0x03" />
-
+        <flag name="topleft" value="1"/>
+        <flag name="topright" value="2"/>
+        <flag name="bottomleft" value="3"/>
+        <flag name="bottomright" value="4"/>
+        <flag name="center" value="5"/>
     </attr>
 
 </resources>
