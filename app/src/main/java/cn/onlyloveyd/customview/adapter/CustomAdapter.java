@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import cn.onlyloveyd.customview.DemoActivity;
+import cn.onlyloveyd.customview.activity.BezierActivity;
 import cn.onlyloveyd.customview.activity.CustomArcProgressBarActivity;
 import cn.onlyloveyd.customview.activity.CustomViewGroupActivity;
 import cn.onlyloveyd.customview.activity.IndicatorActivity;
@@ -55,6 +56,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
         Intent intent4 = new Intent();
         intent4.setClass(mContext, CustomViewGroupActivity.class);
         demoList.add(intent4);
+
+        mTitles.add("贝塞尔曲线学习");
+        Intent intent5 = new Intent();
+        intent5.setClass(mContext, BezierActivity.class);
+        demoList.add(intent5);
     }
 
     @Override
