@@ -40,6 +40,9 @@ public class CustomViewGroup extends ViewGroup {
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
+        /**
+         * 每个子View的大小都设置成相同大小
+         */
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
             int mode = MeasureSpec.EXACTLY;
@@ -59,19 +62,19 @@ public class CustomViewGroup extends ViewGroup {
             final LayoutParams lp = (LayoutParams) child.getLayoutParams();
             int gravity = lp.gravity;
             switch (gravity) {
-                case 1:
+                case LayoutParams.TOPLEFT_GRAVITY:
                     child.layout(l, t, width, height);
                     break;
-                case 2:
+                case LayoutParams.TOPRIGHT_GRAVITY:
                     child.layout(r - width, t, r, height);
                     break;
-                case 3:
+                case LayoutParams.BOTTOMLEFT_GRAVITY:
                     child.layout(l, b - height, width, b);
                     break;
-                case 4:
+                case LayoutParams.BOTTOMRIGHT_GRAVITY:
                     child.layout(r - width, b - height, r, b);
                     break;
-                case 5:
+                case LayoutParams.CENTER_GRAVITY:
                     child.layout((r - width) / 2, (b - height) / 2, (r + width) / 2,
                             (b + height) / 2);
                     break;
@@ -86,8 +89,29 @@ public class CustomViewGroup extends ViewGroup {
         return new LayoutParams(getContext(), attrs);
     }
 
+    @Override
+    protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams p) {
+        return new LayoutParams(p);
+    }
+
+    @Override
+    protected ViewGroup.LayoutParams generateDefaultLayoutParams() {
+        return new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+    }
+
+
+    @Override
+    protected boolean checkLayoutParams(ViewGroup.LayoutParams p) {
+        return p instanceof LayoutParams;
+    }
+
     public static class LayoutParams extends ViewGroup.LayoutParams {
         public static final int UNSPECIFIED_GRAVITY = -1;
+        public static final int TOPLEFT_GRAVITY = 1;
+        public static final int TOPRIGHT_GRAVITY = 2;
+        public static final int BOTTOMLEFT_GRAVITY = 3;
+        public static final int BOTTOMRIGHT_GRAVITY = 4;
+        public static final int CENTER_GRAVITY = 5;
 
         public int gravity = UNSPECIFIED_GRAVITY;
 
@@ -99,17 +123,6 @@ public class CustomViewGroup extends ViewGroup {
             a.recycle();
         }
 
-        /**
-         * Creates a new set of layout parameters with the specified width, height
-         * and weight.
-         *
-         * @param width   the width, either {@link #MATCH_PARENT},
-         *                {@link #WRAP_CONTENT} or a fixed size in pixels
-         * @param height  the height, either {@link #MATCH_PARENT},
-         *                {@link #WRAP_CONTENT} or a fixed size in pixels
-         * @param gravity the gravity
-         * @see android.view.Gravity
-         */
         public LayoutParams(int width, int height, int gravity) {
             super(width, height);
             this.gravity = gravity;
@@ -117,18 +130,9 @@ public class CustomViewGroup extends ViewGroup {
 
         public LayoutParams(@NonNull ViewGroup.LayoutParams source) {
             super(source);
+            this.gravity = TOPLEFT_GRAVITY;
         }
 
-        public LayoutParams(@NonNull ViewGroup.MarginLayoutParams source) {
-            super(source);
-        }
-
-        /**
-         * Copy constructor. Clones the width, height, margin values, and
-         * gravity of the source.
-         *
-         * @param source The layout params to copy from.
-         */
         public LayoutParams(@NonNull LayoutParams source) {
             super(source);
 
