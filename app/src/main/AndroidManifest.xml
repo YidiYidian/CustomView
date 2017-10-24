@@ -24,8 +24,6 @@
         <activity android:name=".activity.RadarActivity"/>
         <activity android:name=".activity.CustomViewGroupActivity">
         </activity>
-        <activity android:name=".activity.BezierActivity">
-        </activity>
     </application>
 
 </manifest>
