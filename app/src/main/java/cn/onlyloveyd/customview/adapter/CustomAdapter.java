@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import cn.onlyloveyd.customview.DemoActivity;
 import cn.onlyloveyd.customview.activity.CustomArcProgressBarActivity;
+import cn.onlyloveyd.customview.activity.CustomSwitchActivity;
 import cn.onlyloveyd.customview.activity.CustomViewGroupActivity;
 import cn.onlyloveyd.customview.activity.IndicatorActivity;
 import cn.onlyloveyd.customview.activity.RadarActivity;
@@ -55,6 +56,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
         Intent intent4 = new Intent();
         intent4.setClass(mContext, CustomViewGroupActivity.class);
         demoList.add(intent4);
+
+        mTitles.add("自定义开关");
+        Intent intent5 = new Intent();
+        intent5.setClass(mContext, CustomSwitchActivity.class);
+        demoList.add(intent5);
     }
 
     @Override
