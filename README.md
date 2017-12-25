@@ -2,7 +2,7 @@
 自定义View学习记录
 
 ## 1. 仪表盘进度条
-1[](/screenshot/CustomArcProgressBar.png)
+![](/screenshot/CustomArcProgressBar.png)
 
 ## 2. Emui开关
 ![](/screenshot/CustomEmuiSwitch.png)
