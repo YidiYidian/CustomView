@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import cn.onlyloveyd.customview.DemoActivity;
 import cn.onlyloveyd.customview.activity.CustomArcProgressBarActivity;
+import cn.onlyloveyd.customview.activity.CustomCleanableEditTextActivity;
 import cn.onlyloveyd.customview.activity.CustomSwitchActivity;
 import cn.onlyloveyd.customview.activity.CustomViewGroupActivity;
 import cn.onlyloveyd.customview.activity.IndicatorActivity;
@@ -61,6 +62,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
         Intent intent5 = new Intent();
         intent5.setClass(mContext, CustomSwitchActivity.class);
         demoList.add(intent5);
+
+        mTitles.add("可删除编辑框");
+        Intent intent6 = new Intent();
+        intent6.setClass(mContext, CustomCleanableEditTextActivity.class);
+        demoList.add(intent6);
     }
 
     @Override

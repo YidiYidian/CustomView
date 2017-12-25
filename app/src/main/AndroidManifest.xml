@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".activity.CustomSwitchActivity">
         </activity>
+        <activity android:name=".activity.CustomCleanableEditTextActivity">
+        </activity>
     </application>
 
 </manifest>
