@@ -49,7 +49,7 @@ public class CustomCleanableEditText extends AppCompatEditText implements TextWa
         try {
             left = getCompoundDrawables()[0];
             right = getCompoundDrawables()[2];
-            initDatas();
+            initData();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -58,7 +58,7 @@ public class CustomCleanableEditText extends AppCompatEditText implements TextWa
     /**
      * 初始化数据
      */
-    private void initDatas() {
+    private void initData() {
         try {
             setCompoundDrawablesWithIntrinsicBounds(left, null, null, null);
             addListeners();
