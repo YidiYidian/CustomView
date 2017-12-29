@@ -39,19 +39,17 @@ public class CustomCleanableEditText extends AppCompatEditText implements TextWa
 
     public CustomCleanableEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        initWedgits(attrs);
+        initWidgets();
     }
 
     /**
      * 初始化各组件
-     * @param attrs
-     *            属性集
      */
-    private void initWedgits(AttributeSet attrs) {
+    private void initWidgets() {
         try {
             left = getCompoundDrawables()[0];
             right = getCompoundDrawables()[2];
-            initDatas();
+            initData();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,9 +58,8 @@ public class CustomCleanableEditText extends AppCompatEditText implements TextWa
     /**
      * 初始化数据
      */
-    private void initDatas() {
+    private void initData() {
         try {
-            // 第一次显示，隐藏删除图标
             setCompoundDrawablesWithIntrinsicBounds(left, null, null, null);
             addListeners();
         } catch (Exception e) {
@@ -91,10 +88,8 @@ public class CustomCleanableEditText extends AppCompatEditText implements TextWa
     public void onTextChanged(CharSequence s, int start, int before, int after) {
         if (hasFocus) {
             if (TextUtils.isEmpty(s)) {
-                // 如果为空，则不显示删除图标
                 setCompoundDrawablesWithIntrinsicBounds(left, null, null, null);
             } else {
-                // 如果非空，则要显示删除图标
                 if (null == right) {
                     right = getCompoundDrawables()[2];
                 }
@@ -108,10 +103,7 @@ public class CustomCleanableEditText extends AppCompatEditText implements TextWa
         try {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_UP:
-                    // 获取点击时手指抬起的X坐标
                     int x = (int) event.getX();
-                    // 当点击的坐标到当前输入框右侧的距离小于等于getCompoundPaddingRight()的距离时，则认为是点击了删除图标
-                    // getCompoundPaddingRight()的说明：Returns the right padding of the view, plus space for the right Drawable if any.
                     if ((getWidth() - x) <= getCompoundPaddingRight()) {
                         if (!TextUtils.isEmpty(getText().toString())) {
                             setText("");
