@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import cn.onlyloveyd.customview.DemoActivity;
 import cn.onlyloveyd.customview.activity.CustomArcProgressBarActivity;
 import cn.onlyloveyd.customview.activity.CustomCleanableEditTextActivity;
+import cn.onlyloveyd.customview.activity.CustomCountDownActivity;
 import cn.onlyloveyd.customview.activity.CustomSwitchActivity;
 import cn.onlyloveyd.customview.activity.CustomViewGroupActivity;
 import cn.onlyloveyd.customview.activity.IndicatorActivity;
@@ -67,6 +68,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
         Intent intent6 = new Intent();
         intent6.setClass(mContext, CustomCleanableEditTextActivity.class);
         demoList.add(intent6);
+
+        mTitles.add("倒计时");
+        Intent intent7 = new Intent();
+        intent7.setClass(mContext, CustomCountDownActivity.class);
+        demoList.add(intent7);
     }
 
     @Override
