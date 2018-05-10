@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CustomViewDemo</string>
+    <string name="update_message">应用升级弹框</string>
 </resources>

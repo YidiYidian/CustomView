@@ -18,6 +18,7 @@ import cn.onlyloveyd.customview.activity.CustomCountDownActivity;
 import cn.onlyloveyd.customview.activity.CustomSwitchActivity;
 import cn.onlyloveyd.customview.activity.CustomViewGroupActivity;
 import cn.onlyloveyd.customview.activity.IndicatorActivity;
+import cn.onlyloveyd.customview.activity.LoadingActivity;
 import cn.onlyloveyd.customview.activity.RadarActivity;
 
 /**
@@ -73,6 +74,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
         Intent intent7 = new Intent();
         intent7.setClass(mContext, CustomCountDownActivity.class);
         demoList.add(intent7);
+
+        mTitles.add("加载对话框");
+        Intent intent8 = new Intent();
+        intent8.setClass(mContext, LoadingActivity.class);
+        demoList.add(intent8);
     }
 
     @Override

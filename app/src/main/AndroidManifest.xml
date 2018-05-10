@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="cn.onlyloveyd.customview">
+    package="cn.onlyloveyd.customview">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,24 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.CustomArcProgressBarActivity"/>
+        <activity android:name=".activity.CustomArcProgressBarActivity" />
         <activity android:name=".DemoActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.IndicatorActivity"/>
-        <activity android:name=".activity.RadarActivity"/>
-        <activity android:name=".activity.CustomViewGroupActivity">
-        </activity>
-        <activity android:name=".activity.CustomSwitchActivity">
-        </activity>
-        <activity android:name=".activity.CustomCleanableEditTextActivity">
-        </activity>
-        <activity android:name=".activity.CustomCountDownActivity">
-        </activity>
+        <activity android:name=".activity.IndicatorActivity" />
+        <activity android:name=".activity.RadarActivity" />
+        <activity android:name=".activity.CustomViewGroupActivity"></activity>
+        <activity android:name=".activity.CustomSwitchActivity"></activity>
+        <activity android:name=".activity.CustomCleanableEditTextActivity"></activity>
+        <activity android:name=".activity.CustomCountDownActivity"></activity>
+        <activity android:name=".activity.LoadingActivity"></activity>
     </application>
 
 </manifest>
