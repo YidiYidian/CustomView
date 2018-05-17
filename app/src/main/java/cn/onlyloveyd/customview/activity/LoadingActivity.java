@@ -22,8 +22,6 @@ public class LoadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
 
-        LoadingDialog loadingDialog = new LoadingDialog(this, false);
-        loadingDialog.setContent("正在加载...");
-        loadingDialog.show();
+        LoadingDialog.show(this, true);
     }
 }

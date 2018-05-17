@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cn.onlyloveyd.customview.DemoActivity;
 import cn.onlyloveyd.customview.activity.CustomArcProgressBarActivity;
@@ -32,53 +33,45 @@ import cn.onlyloveyd.customview.activity.RadarActivity;
  * @author Mraz
  */
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHolder> {
+    class AdapterItem {
+        private String title;
+        private Intent intent;
+
+        AdapterItem(String title, Intent intent) {
+            this.title = title;
+            this.intent = intent;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public Intent getIntent() {
+            return intent;
+        }
+
+        public void setIntent(Intent intent) {
+            this.intent = intent;
+        }
+    }
 
     private final Context mContext;
-    private final ArrayList<Intent> demoList = new ArrayList<>();
-    private final ArrayList<String> mTitles = new ArrayList<>();
+    List<AdapterItem> mContentList = new ArrayList<AdapterItem>();
 
     public CustomAdapter(Context context) {
         mContext = context;
-
-        mTitles.add("自定义仪表盘进度条");
-        Intent intent = new Intent();
-        intent.setClass(mContext, CustomArcProgressBarActivity.class);
-        demoList.add(intent);
-
-        mTitles.add("自定义ViewPager指示器");
-        Intent intent2 = new Intent();
-        intent2.setClass(mContext, IndicatorActivity.class);
-        demoList.add(intent2);
-
-        mTitles.add("自定义雷达图");
-        Intent intent3 = new Intent();
-        intent3.setClass(mContext, RadarActivity.class);
-        demoList.add(intent3);
-
-        mTitles.add("自定义ViewGroup");
-        Intent intent4 = new Intent();
-        intent4.setClass(mContext, CustomViewGroupActivity.class);
-        demoList.add(intent4);
-
-        mTitles.add("自定义开关");
-        Intent intent5 = new Intent();
-        intent5.setClass(mContext, CustomSwitchActivity.class);
-        demoList.add(intent5);
-
-        mTitles.add("可删除编辑框");
-        Intent intent6 = new Intent();
-        intent6.setClass(mContext, CustomCleanableEditTextActivity.class);
-        demoList.add(intent6);
-
-        mTitles.add("倒计时");
-        Intent intent7 = new Intent();
-        intent7.setClass(mContext, CustomCountDownActivity.class);
-        demoList.add(intent7);
-
-        mTitles.add("加载对话框");
-        Intent intent8 = new Intent();
-        intent8.setClass(mContext, LoadingActivity.class);
-        demoList.add(intent8);
+        mContentList.add(new AdapterItem("自定义仪表盘进度条", new Intent(context, CustomArcProgressBarActivity.class)));
+        mContentList.add(new AdapterItem("自定义ViewPager指示器", new Intent(context, IndicatorActivity.class)));
+        mContentList.add(new AdapterItem("自定义雷达图", new Intent(context, RadarActivity.class)));
+        mContentList.add(new AdapterItem("自定义ViewGroup", new Intent(context, CustomViewGroupActivity.class)));
+        mContentList.add(new AdapterItem("自定义开关", new Intent(context, CustomSwitchActivity.class)));
+        mContentList.add(new AdapterItem("可删除编辑框", new Intent(context, CustomCleanableEditTextActivity.class)));
+        mContentList.add(new AdapterItem("倒计时", new Intent(context, CustomCountDownActivity.class)));
+        mContentList.add(new AdapterItem("加载对话框", new Intent(context, LoadingActivity.class)));
     }
 
     @Override
@@ -95,20 +88,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
     @Override
     public void onBindViewHolder(TextViewHolder holder, int position) {
         final int finalPosition = position;
-        ((TextView) holder.itemView).setText(mTitles.get(position));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mContext.startActivity(demoList.get(finalPosition),
-                        ActivityOptions.makeSceneTransitionAnimation(
-                                (DemoActivity) mContext).toBundle());
-            }
-        });
+        ((TextView) holder.itemView).setText(mContentList.get(position).getTitle());
+        holder.itemView.setOnClickListener(v -> mContext.startActivity(mContentList.get(position).getIntent(),
+                ActivityOptions.makeSceneTransitionAnimation(
+                        (DemoActivity) mContext).toBundle()));
     }
 
     @Override
     public int getItemCount() {
-        return demoList.size();
+        return mContentList.size();
     }
 
     class TextViewHolder extends RecyclerView.ViewHolder {

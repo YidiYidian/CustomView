@@ -22,11 +22,11 @@
         </activity>
         <activity android:name=".activity.IndicatorActivity" />
         <activity android:name=".activity.RadarActivity" />
-        <activity android:name=".activity.CustomViewGroupActivity"></activity>
-        <activity android:name=".activity.CustomSwitchActivity"></activity>
-        <activity android:name=".activity.CustomCleanableEditTextActivity"></activity>
-        <activity android:name=".activity.CustomCountDownActivity"></activity>
-        <activity android:name=".activity.LoadingActivity"></activity>
+        <activity android:name=".activity.CustomViewGroupActivity" />
+        <activity android:name=".activity.CustomSwitchActivity" />
+        <activity android:name=".activity.CustomCleanableEditTextActivity" />
+        <activity android:name=".activity.CustomCountDownActivity" />
+        <activity android:name=".activity.LoadingActivity" />
     </application>
 
 </manifest>
