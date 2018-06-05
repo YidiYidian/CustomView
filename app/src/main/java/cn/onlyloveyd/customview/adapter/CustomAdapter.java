@@ -21,6 +21,7 @@ import cn.onlyloveyd.customview.activity.CustomViewGroupActivity;
 import cn.onlyloveyd.customview.activity.IndicatorActivity;
 import cn.onlyloveyd.customview.activity.LoadingActivity;
 import cn.onlyloveyd.customview.activity.RadarActivity;
+import cn.onlyloveyd.customview.activity.RefreshAndLoadMoreActivity;
 
 /**
  * 文 件 名: CustomAdapter
@@ -72,6 +73,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
         mContentList.add(new AdapterItem("可删除编辑框", new Intent(context, CustomCleanableEditTextActivity.class)));
         mContentList.add(new AdapterItem("倒计时", new Intent(context, CustomCountDownActivity.class)));
         mContentList.add(new AdapterItem("加载对话框", new Intent(context, LoadingActivity.class)));
+        mContentList.add(new AdapterItem("下拉刷新加载更多", new Intent(context, RefreshAndLoadMoreActivity.class)));
     }
 
     @Override

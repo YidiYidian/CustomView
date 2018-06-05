@@ -1,4 +1,4 @@
-package cn.onlyloveyd.customview.activity;
+package cn.onlyloveyd.customview.view;
 
 import android.app.Dialog;
 import android.content.Context;

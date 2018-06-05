@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">CustomViewDemo</string>
     <string name="update_message">应用升级弹框</string>
+
+    <string name="load_more_loading">正在加载…</string>
+    <string name="load_more_success">点击加载更多</string>
+    <string name="load_more_fail">加载失败,点击重试</string>
+    <string name="load_more_finish">所有数据加载完成</string>
 </resources>

@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import cn.onlyloveyd.customview.R;
+import cn.onlyloveyd.customview.view.LoadingDialog;
 
 /**
  * 文 件 名: LoadingActivity
