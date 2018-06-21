@@ -12,16 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import java.util.List;
 
 import cn.onlyloveyd.customview.R;
-
-/**
- * 加载更多RecyclerView
- *
- * @author Created by jiangyujiang on 2017/8/23.
- */
 
 public class LoadMoreRecyclerView extends RecyclerView {
     private WrapperAdapter mWrapperAdapter;

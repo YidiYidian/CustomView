@@ -72,7 +72,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.TextViewHo
         mContentList.add(new AdapterItem("自定义开关", new Intent(context, CustomSwitchActivity.class)));
         mContentList.add(new AdapterItem("可删除编辑框", new Intent(context, CustomCleanableEditTextActivity.class)));
         mContentList.add(new AdapterItem("倒计时", new Intent(context, CustomCountDownActivity.class)));
-        mContentList.add(new AdapterItem("加载对话框", new Intent(context, LoadingActivity.class)));
+        mContentList.add(new AdapterItem("加载对话框和简洁对话框", new Intent(context, LoadingActivity.class)));
         mContentList.add(new AdapterItem("下拉刷新加载更多", new Intent(context, RefreshAndLoadMoreActivity.class)));
     }
 

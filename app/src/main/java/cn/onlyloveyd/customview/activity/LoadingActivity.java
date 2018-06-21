@@ -1,10 +1,14 @@
 package cn.onlyloveyd.customview.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cn.onlyloveyd.customview.R;
 import cn.onlyloveyd.customview.view.LoadingDialog;
+import cn.onlyloveyd.customview.view.PromptDialog;
 
 /**
  * 文 件 名: LoadingActivity
@@ -18,11 +22,21 @@ import cn.onlyloveyd.customview.view.LoadingDialog;
  */
 public class LoadingActivity extends AppCompatActivity {
 
+
+    @BindView(R.id.bt_loading)
+    Button btLoading;
+    @BindView(R.id.bt_prompt)
+    Button btPrompt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
+        ButterKnife.bind(this);
 
-        LoadingDialog.show(this, true);
+        btLoading.setOnClickListener(v -> LoadingDialog.show(LoadingActivity.this, true));
+
+        btPrompt.setOnClickListener(v -> PromptDialog.show(LoadingActivity.this, "测试"));
+
     }
 }

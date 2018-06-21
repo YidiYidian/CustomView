@@ -9,11 +9,6 @@ import android.widget.TextView;
 
 import cn.onlyloveyd.customview.R;
 
-/**
- * 加载数据不确定进度对话框
- *
- * @author Created by jiangyujiang on 2017/5/4.
- */
 
 public class LoadingDialog extends Dialog {
     private TextView contentTv;
