@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CountDownTextView">
+        <attr name="pendingText" format="string" />
+        <attr name="countDownText" format="string" />
+        <attr name="countDownSecond" format="integer" />
+    </declare-styleable>
+</resources>

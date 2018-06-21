@@ -1,8 +1,12 @@
 package cn.onlyloveyd.customview.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cn.onlyloveyd.customview.R;
+import cn.onlyloveyd.customview.view.CountDownTextView;
 
 
 /**
@@ -17,9 +21,15 @@ import cn.onlyloveyd.customview.R;
  */
 public class CustomCountDownActivity extends AppCompatActivity {
 
+    @BindView(R.id.cdtv)
+    CountDownTextView cdtv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_count_down);
+        ButterKnife.bind(this);
+
+        cdtv.start();
     }
 }
